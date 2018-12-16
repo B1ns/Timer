@@ -1,4 +1,4 @@
-/* Á¤ÀÇ */
+/* ì •ì˜ */
 
 #define _CRT_SECURE_NO_WARNINGS 
 #define YELLOW SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), 14);
@@ -15,7 +15,7 @@
 #define RA    440
 
 
-/*»ç¿ëµÈ Çì´õÆÄÀÏ*/
+/*ì‚¬ìš©ëœ í—¤ë”íŒŒì¼*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,7 +23,7 @@
 #include <Windows.h>
 #include <conio.h>
 
-/*ÇÔ¼ö¼±¾ğ*/
+/*í•¨ìˆ˜ì„ ì–¸*/
 
 int timer();
 int menu1();
@@ -36,26 +36,26 @@ char timerBuffer[8 + 1];
 void stopwatch(int onOff);
 void secToHHMMSS(int secs, char* s, size_t size);
 
-/* ¸ŞÀÎÇÔ¼ö */
+/* ë©”ì¸í•¨ìˆ˜ */
 
 int main()
 {
 	YELLOW
 		int num;
 	TAB6 printf(" Timer\n");
-	TAB4 printf("\t    ½Ã°£À» ¾Æ²¸¾²ÀÚ.\n");
+	TAB4 printf("\t    ì‹œê°„ì„ ì•„ê»´ì“°ì.\n");
 	line();
 	timer();
 	line();
-	TAB4 printf(" ½Ã°è,¾Ë¶÷,½ºÅé¿öÄ¡ - (c) H1222 Á¤ºó \n");
+	TAB4 printf(" ì‹œê³„,ì•ŒëŒ,ìŠ¤í†±ì›Œì¹˜ - (c) H1222 ì •ë¹ˆ \n");
 	line();
-	TAB4 printf("¡Ø1¹ø: ÇÑ±¹½Ã°£ ¡Ø2¹ø ¾Ë¶÷ ¡Ø3¹ø ½ºÅé¿öÄ¡ \n");
+	TAB4 printf("â€»1ë²ˆ: í•œêµ­ì‹œê°„ â€»2ë²ˆ ì•ŒëŒ â€»3ë²ˆ ìŠ¤í†±ì›Œì¹˜ \n");
 	printf("\n");
-	TAB4 printf("¡ØÁ¾·áÇÏ°í ½Í´Ù¸é ¾Æ¹«Å°³ª ÀÔ·ÂÇØÁÖ¼¼¿ä. \n");
-	TAB4 printf("\t  ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä: ");
+	TAB4 printf("â€»ì¢…ë£Œí•˜ê³  ì‹¶ë‹¤ë©´ ì•„ë¬´í‚¤ë‚˜ ì…ë ¥í•´ì£¼ì„¸ìš”. \n");
+	TAB4 printf("\t  ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”: ");
 	scanf_s("%d", &num);
 
-	switch (num) // ¿øÇÏ´Â ±â´ÉÀ» ¼±ÅÃÇÏ±âÀ§ÇÑ switch ¹® 
+	switch (num) // ì›í•˜ëŠ” ê¸°ëŠ¥ì„ ì„ íƒí•˜ê¸°ìœ„í•œ switch ë¬¸ 
 	{
 	case 1:
 		menu1();
@@ -67,13 +67,13 @@ int main()
 		menu3();
 		break;
 	default:
-		printf("Á¾·áÇÏ±â \n");
+		printf("ì¢…ë£Œí•˜ê¸° \n");
 	}
 	system("PAUSE");
 	return 0;
 }
 
-/* ¿©±â¼­ ºÎÅÍ »ç¿ëÀÚ Á¤ÀÇ ÇÔ¼ö ÀÔ´Ï´Ù. */
+/* ì—¬ê¸°ì„œ ë¶€í„° ì‚¬ìš©ì ì •ì˜ í•¨ìˆ˜ ì…ë‹ˆë‹¤. */
 
 int timer() {
 
@@ -101,7 +101,7 @@ int timer() {
 	return 0;
 }
 
-/* ÄÚµå¸¦ ÁÙÀÌ±âÀ§ÇÑ line À» ±×·ÁÁÙ ÇÔ¼ö. */
+/* ì½”ë“œë¥¼ ì¤„ì´ê¸°ìœ„í•œ line ì„ ê·¸ë ¤ì¤„ í•¨ìˆ˜. */
 
 char line() {
 	char line[102] = { "---------------------------------------------------------------------------------------------------\n" };
@@ -109,23 +109,23 @@ char line() {
 	return 0;
 }
 
-/*¾Ë¶÷À» ¿ï¸®±âÀ§ÇÑ ÀÌ½ºÄÉÀÌÇÁ ÄÚµå¸¦ »ç¿ëÇÔ .feat °æ°íÀ½*/
+/*ì•ŒëŒì„ ìš¸ë¦¬ê¸°ìœ„í•œ ì´ìŠ¤ì¼€ì´í”„ ì½”ë“œë¥¼ ì‚¬ìš©í•¨ .feat ê²½ê³ ìŒ*/
 
 int alarm() {
 	int sound[] = { MI, DO, SOL, DO, SOL, RA, SOL, DO, RA ,SOL, MI, SOL };
-	/*¹Ì -> µµ -> ¼Ö -> µµ -> ¼Ö -> ¶ó -> ¼Ö -> µµ -> ¶ó -> ¼Ö -> ¹Ì ->¼Ö*/
+	/*ë¯¸ -> ë„ -> ì†” -> ë„ -> ì†” -> ë¼ -> ì†” -> ë„ -> ë¼ -> ì†” -> ë¯¸ ->ì†”*/
 	for (int t = 0; t < 2; t++)
 	{
-		for (int i = 0; i < 8; i++)	//2¹ø Ãâ·Â
+		for (int i = 0; i < 8; i++)	//2ë²ˆ ì¶œë ¥
 		{
 			Beep(sound[i], 200);
-			Sleep(1000);		//1ÃÊ ½°Ç¥
+			Sleep(1000);		//1ì´ˆ ì‰¼í‘œ
 		}
 	}
 
 	return 0;
 }
-/* ÇÑ±¹½Ã°£À» 24½Ã ÇüÅÂ·Î Ç¥ÇöÇÏ´Â ÇÔ¼ö */
+/* í•œêµ­ì‹œê°„ì„ 24ì‹œ í˜•íƒœë¡œ í‘œí˜„í•˜ëŠ” í•¨ìˆ˜ */
 int menu1()
 {
 	struct tm korea_time;
@@ -139,15 +139,15 @@ int menu1()
 		time(&ti);
 		korea_time = *localtime(&ti);
 
-		TAB6 printf("  ÇÑ±¹ ½Ã°£    \n");
+		TAB6 printf("  í•œêµ­ ì‹œê°„    \n");
 		line();
-		TAB6 printf("(C)¸¸µçÀÌ:Á¤ºó\n");
+		TAB6 printf("(C)ë§Œë“ ì´:ì •ë¹ˆ\n");
 		line();
-		TAB4 printf("\t¢Ñ %d ½Ã ", korea_time.tm_hour);
-		printf("¢Ñ %d ºĞ ", korea_time.tm_min);
-		printf("¢Ñ %d ÃÊ \n", korea_time.tm_sec);
+		TAB4 printf("\tâ˜ %d ì‹œ ", korea_time.tm_hour);
+		printf("â˜ %d ë¶„ ", korea_time.tm_min);
+		printf("â˜ %d ì´ˆ \n", korea_time.tm_sec);
 		printf("\n");
-		TAB4 printf("    ¡ØÁ¾·áÇÏ½Ç¶§´Â Ctrl_C ¸¦ ´­·¯ÁÖ¼¼¿ä.\n");
+		TAB4 printf("    â€»ì¢…ë£Œí•˜ì‹¤ë•ŒëŠ” Ctrl_C ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”.\n");
 		Sleep(1000);
 
 	}
@@ -156,7 +156,7 @@ int menu1()
 	main();
 	return 0;
 }
-/* Å¸ÀÌ¸Ó ÇÔ¼ö */
+/* íƒ€ì´ë¨¸ í•¨ìˆ˜ */
 int menu2()
 {
 	system("cls");
@@ -165,10 +165,10 @@ int menu2()
 	int seconds = 0;
 
 	line();
-	TAB4 printf("\t½Ã°£À» ÀÔ·ÂÇØÁÖ¼¼¿ä ?ºĞ ?ÃÊ");
+	TAB4 printf("\tì‹œê°„ì„ ì…ë ¥í•´ì£¼ì„¸ìš” ?ë¶„ ?ì´ˆ");
 	NextLine
 		line();
-	printf("ÀÔ·Â : ");
+	printf("ì…ë ¥ : ");
 	scanf_s("%d %d", &minutes, &seconds);
 
 
@@ -177,7 +177,7 @@ int menu2()
 		system("cls");
 		NextLine
 			line();
-		TAB6 printf("%dºĞ %dÃÊ\t", minutes, seconds--);
+		TAB6 printf("%dë¶„ %dì´ˆ\t", minutes, seconds--);
 		NextLine
 			line();
 		Sleep(1000);
@@ -191,29 +191,29 @@ int menu2()
 	system("cls");
 	NextLine
 		line();
-	TAB6 printf("%dºĞ %dÃÊ\n", minutes, seconds--);
+	TAB6 printf("%dë¶„ %dì´ˆ\n", minutes, seconds--);
 	line();
 	alarm();
-	TAB4 printf("\t     ¾Ë¶÷½Ã°£ Á¾·á!\n");
+	TAB4 printf("\t     ì•ŒëŒì‹œê°„ ì¢…ë£Œ!\n");
 	alarm();
 	system("PAUSE");
 	system("cls");
 	main();
 	return 0;
 }
-/* ½ºÅ¾¿öÄ¡ ÇÔ¼ö */
+/* ìŠ¤íƒ‘ì›Œì¹˜ í•¨ìˆ˜ */
 int menu3() {
 
 
-	stopwatch(1); // 1À» ÀÎ¼ö·Î ³ÖÀ¸¸é Å¸ÀÌ¸Ó°¡ ÄÑÁü
-	TAB4 puts("    Å¸ÀÌ¸Ó ON! ¾Æ¹«Å°³ª ´©¸£¸é Á¾·á");
+	stopwatch(1); // 1ì„ ì¸ìˆ˜ë¡œ ë„£ìœ¼ë©´ íƒ€ì´ë¨¸ê°€ ì¼œì§
+	TAB4 puts("    íƒ€ì´ë¨¸ ON! ì•„ë¬´í‚¤ë‚˜ ëˆ„ë¥´ë©´ ì¢…ë£Œ");
 
-	// À¯Àú°¡ ¾Æ¹« Å°³ª ´©¸¦ ¶§±îÁö ¹«ÇÑÁ¤ ´ë±â
-	_getch(); // _getch() ´Â getch() ÀÇ º¸¾È °­È­ ¹öÀü
+	// ìœ ì €ê°€ ì•„ë¬´ í‚¤ë‚˜ ëˆ„ë¥¼ ë•Œê¹Œì§€ ë¬´í•œì • ëŒ€ê¸°
+	_getch(); // _getch() ëŠ” getch() ì˜ ë³´ì•ˆ ê°•í™” ë²„ì „
 
 
-	stopwatch(0); // 0À» ³ÖÀ¸¸é Å¸ÀÌ¸Ó°¡ ²¨Áö°í ½Ã°£ ¹®ÀÚ¿­À» ¹öÆÛ¿¡ ¼³Á¤
-	TAB4 printf("    Å¸ÀÌ¸Ó OFF! °æ°ú ½Ã°£Àº: [%s]\n", timerBuffer);
+	stopwatch(0); // 0ì„ ë„£ìœ¼ë©´ íƒ€ì´ë¨¸ê°€ êº¼ì§€ê³  ì‹œê°„ ë¬¸ìì—´ì„ ë²„í¼ì— ì„¤ì •
+	TAB4 printf("    íƒ€ì´ë¨¸ OFF! ê²½ê³¼ ì‹œê°„ì€: [%s]\n", timerBuffer);
 
 	system("PAUSE");
 	system("cls");
@@ -222,20 +222,20 @@ int menu3() {
 }
 
 void stopwatch(int onOff) {
-	static int oldTime; // stopwatch ÇÔ¼ö°¡ Á¾·áµÇ¾îµµ °ªÀ» ±â¾ïÇÏ´Â "Á¤Àû Áö¿ª º¯¼ö"
+	static int oldTime; // stopwatch í•¨ìˆ˜ê°€ ì¢…ë£Œë˜ì–´ë„ ê°’ì„ ê¸°ì–µí•˜ëŠ” "ì •ì  ì§€ì—­ ë³€ìˆ˜"
 
-	if (onOff == 1) { // Å¸ÀÌ¸Ó ÄÑ±â
+	if (onOff == 1) { // íƒ€ì´ë¨¸ ì¼œê¸°
 		oldTime = (int)time(NULL);
 	}
 
-	if (onOff == 0) { // Å¸ÀÌ¸Ó ²ô°í, ½ÃºĞÃÊ¸¦ timerBuffer ¿¡ ÀúÀå
+	if (onOff == 0) { // íƒ€ì´ë¨¸ ë„ê³ , ì‹œë¶„ì´ˆë¥¼ timerBuffer ì— ì €ì¥
 		secToHHMMSS((int)time(NULL) - oldTime, timerBuffer, sizeof(timerBuffer));
 	}
 
 }
 
 
-void secToHHMMSS(int secs, char* s, size_t size) { // Á¤¼ö·Î µÈ ÃÊ(sec)¸¦ ÀÔ·Â ¹Ş¾Æ, "06:17:20" µîÀÇ Çü½ÄÀÇ ¹®ÀÚ¿­·Î ½ÃºĞÃÊ¸¦ ¹è¿­¿¡ ÀúÀå
+void secToHHMMSS(int secs, char* s, size_t size) { // ì •ìˆ˜ë¡œ ëœ ì´ˆ(sec)ë¥¼ ì…ë ¥ ë°›ì•„, "06:17:20" ë“±ì˜ í˜•ì‹ì˜ ë¬¸ìì—´ë¡œ ì‹œë¶„ì´ˆë¥¼ ë°°ì—´ì— ì €ì¥
 	int hour, min, sec;
 
 	sec = secs % 60;
@@ -245,4 +245,4 @@ void secToHHMMSS(int secs, char* s, size_t size) { // Á¤¼ö·Î µÈ ÃÊ(sec)¸¦ ÀÔ·Â ¹
 	sprintf_s(s, size, "%02d:%02d:%02d", hour, min, sec);
 }
 
-/*ÇÁ·Î±×·¥ ¼Ò½º ³¡*/
+/*í”„ë¡œê·¸ë¨ ì†ŒìŠ¤ ë*/
